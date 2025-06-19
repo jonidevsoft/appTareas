@@ -1,0 +1,763 @@
+/* Variables CSS para colores */
+:root {
+    /* Colores para el modo claro */
+    --light-bg-color: #f8f9fa;
+    --light-app-bg: #3ba5b8;
+    --light-text-color: #424242;
+    --light-header-title-color: white;
+    --light-datetime-color: #dbcfcf;
+    --light-toggle-dark-mode-color: #666;
+    --light-input-border: #ced4da;
+    --light-button-bg: #007bff;
+    --light-button-hover-bg: #0056b3;
+    --light-filter-button-bg: #e9ecef;
+    --light-filter-button-text: #495057;
+    --light-filter-button-border: #ced4da;
+    --light-task-bg: #fff;
+    --light-task-shadow: rgba(0, 0, 0, 0.05);
+    --light-task-checkbox-border: #ccc;
+    --light-task-checkbox-checked-bg: #28a745;
+    --light-task-completed-text: #757575;
+    --light-delete-button-bg: #dc3545;
+    --light-delete-button-hover-bg: #c82333;
+    --light-profile-setup-text: #555;
+    --light-profile-image-preview-bg: #ddd;
+    --light-profile-image-preview-text: #888;
+    --light-modal-bg: #fefefe;
+    --light-modal-border: #888;
+    --light-close-button-color: #aaa;
+    --light-modal-label-color: black;
+    --light-modal-input-border: #ccc;
+    --light-modal-save-button-bg: #28a745;
+    --light-modal-cancel-button-bg: #dc3545;
+    --light-enter-app-button-disabled: #ccc;
+
+    /* Colores para el modo oscuro */
+    --dark-bg-color: #212529;
+    --dark-app-bg: #343a40;
+    --dark-text-color: #f8f9fa;
+    --dark-header-title-color: #fff;
+    --dark-datetime-color: #adb5bd;
+    --dark-toggle-dark-mode-color: #fff;
+    --dark-toggle-dark-mode-hover-color: #ddd;
+    --dark-input-bg: #495057;
+    --dark-input-color: #fff;
+    --dark-input-border: #6c757d;
+    --dark-button-bg: #5a6268;
+    --dark-button-hover-bg: #495057;
+    --dark-filter-button-bg: #495057;
+    --dark-filter-button-text: #fff;
+    --dark-filter-button-border: #6c757d;
+    --dark-filter-button-hover-bg: #5a6268;
+    --dark-task-bg: #495057;
+    --dark-task-shadow: rgba(255, 255, 255, 0.05);
+    --dark-task-checkbox-border: #6c757d;
+    --dark-task-checkbox-checked-border: #4f5250; /* Un verde oscuro para el borde del check */
+    --dark-task-checkbox-checked-bg: #28a745; /* El mismo verde de check */
+    --dark-task-checkbox-checked-color: white; /* Color del checkmark */
+    --dark-task-completed-text: #adb5bd;
+    --dark-completed-task-bg: #525e65;
+    --dark-delete-button-bg: #dc3545; /* Mantener rojo para delete */
+    --dark-delete-button-hover-bg: #c82333;
+    --dark-profile-setup-text: #bbb;
+    --dark-profile-name-header-color: #bbb;
+    --dark-profile-image-preview-bg: #555; /* Un gris oscuro para el fondo del preview */
+    --dark-profile-image-preview-text: #bbb;
+    --dark-modal-bg: #343a40;
+    --dark-modal-border: #6c757d;
+    --dark-close-button-color: #bbb;
+    --dark-close-button-hover-color: white;
+    --dark-modal-label-color: #f8f9fa;
+    --dark-modal-input-bg: #495057;
+    --dark-modal-input-color: #fff;
+    --dark-modal-input-border: #6c757d;
+    --dark-modal-save-button-bg: #28a745;
+    --dark-modal-cancel-button-bg: #dc3545;
+    --dark-enter-app-button-disabled: #6c757d;
+}
+
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif; 
+    background-image: url('../img/fondo.png'); 
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+  
+    background-color: var(--light-bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    color: var(--light-text-color);
+}
+
+/* Modo Oscuro para el body */
+body.dark-mode {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+}
+
+/* Contenedor principal de la aplicación */
+.app {
+    background-color: var(--light-app-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    position: relative; /* Necesario para posicionar el profile-header absolutamente */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+body.dark-mode .app {
+    background-color: var(--dark-app-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Encabezado principal de la aplicación */
+.app .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+}
+
+.app .header h1 {
+    color: var(--light-header-title-color);
+    margin: 0;
+    font-size: 2.2em;
+    font-weight: 700; /* Más peso para el título */
+    text-align: center;
+    flex-grow: 1;
+    font-style: italic;
+}
+
+body.dark-mode .app .header h1 {
+    color: var(--dark-header-title-color);
+}
+
+.app .header img {
+    width: 150px; /* Ajusta el tamaño */
+    height: auto;
+    margin-right: 15px;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse */
+}
+
+#datetime {
+    color: var(--light-datetime-color);
+    font-size: 0.9em;
+    margin-top: 10px; /* Espacio para que no esté pegado al título */
+    text-align: center;
+    width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+body.dark-mode #datetime {
+    color: var(--dark-datetime-color);
+}
+
+/* Botón de modo oscuro */
+.app .header button#toggleDarkMode {
+    font-size: 1.5em;
+    line-height: 1;
+    padding: 8px;
+    width: auto;
+    height: auto;
+    background: none;
+    color: var(--light-toggle-dark-mode-color);
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    margin-left: 10px;
+}
+
+.app .header button#toggleDarkMode:hover {
+    background-color: transparent;
+    color: var(--light-toggle-dark-mode-color); /* Se mantiene igual, pero puede variar en el futuro */
+}
+
+body.dark-mode .app .header button#toggleDarkMode {
+    color: var(--dark-toggle-dark-mode-color);
+}
+
+body.dark-mode .app .header button#toggleDarkMode:hover {
+    color: var(--dark-toggle-dark-mode-hover-color);
+}
+
+/* Controles de entrada de tareas */
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+}
+
+input {
+    padding: 12px;
+    border: 1px solid var(--light-input-border);
+    border-radius: 6px;
+    flex-grow: 1;
+    font-size: 1em;
+    background-color: var(--light-task-bg); /* Fondo blanco por defecto */
+    color: var(--light-text-color);
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body.dark-mode input {
+    background-color: var(--dark-input-bg);
+    color: var(--dark-input-color);
+    border-color: var(--dark-input-border);
+}
+
+button {
+    padding: 12px 18px;
+    background-color: var(--light-button-bg);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: var(--light-button-hover-bg);
+}
+
+body.dark-mode button {
+    background-color: var(--dark-button-bg);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode button:hover {
+    background-color: var(--dark-button-hover-bg);
+}
+
+/* Filtros */
+.filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    justify-content: center;
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan */
+}
+
+.filters button {
+    background-color: var(--light-filter-button-bg);
+    color: var(--light-filter-button-text);
+    border: 1px solid var(--light-filter-button-border);
+    padding: 10px 15px; /* Ajustar padding para los filtros */
+    font-size: 0.9em;
+}
+
+.filters button:hover {
+    background-color: var(--light-filter-button-hover-bg);
+}
+
+.filters button.active {
+    background-color: var(--light-button-bg); /* El color del botón principal cuando está activo */
+    color: white;
+    border-color: var(--light-button-bg);
+}
+
+body.dark-mode .filters button {
+    background-color: var(--dark-filter-button-bg);
+    color: var(--dark-filter-button-text);
+    border-color: var(--dark-filter-button-border);
+}
+
+body.dark-mode .filters button:hover {
+    background-color: var(--dark-filter-button-hover-bg);
+}
+
+body.dark-mode .filters button.active {
+    background-color: var(--dark-button-bg); /* O el que prefieras para activo en dark mode */
+    color: white;
+    border-color: var(--dark-button-bg);
+}
+
+
+/* Lista de Tareas */
+ul.task-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+li.task-item { /* Usar una clase más específica para los elementos de la lista */
+    padding: 15px;
+    margin-bottom: 8px;
+    background-color: var(--light-task-bg);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px var(--light-task-shadow);
+    display: flex;
+    align-items: center;
+    cursor: grab;
+    font-size: 1.1em;
+    color: var(--light-text-color);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+li.task-item.dragging {
+    opacity: 0.5; /* Reducir opacidad del elemento arrastrado */
+    border: 2px dashed var(--light-button-bg);
+}
+
+body.dark-mode li.task-item {
+    background-color: var(--dark-task-bg);
+    color: var(--dark-text-color);
+    box-shadow: 0 1px 3px var(--dark-task-shadow);
+}
+
+body.dark-mode li.task-item.dragging {
+    border: 2px dashed var(--dark-button-bg);
+}
+
+.task-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid var(--light-task-checkbox-border);
+    border-radius: 50%;
+    margin-right: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em; /* Tamaño del icono de check */
+    color: transparent; /* Inicialmente oculto */
+    transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.task-checkbox:hover {
+    border-color: #999;
+}
+
+.task-checkbox.checked {
+    border-color: var(--light-task-checkbox-checked-bg);
+    background-color: var(--light-task-checkbox-checked-bg);
+    color: white; /* Color del checkmark */
+}
+
+.task-checkbox.checked i.fas.fa-check { /* Estilo específico para el ícono de Font Awesome */
+    color: inherit; /* Heredar el color del padre (blanco) */
+}
+
+body.dark-mode .task-checkbox {
+    border-color: var(--dark-task-checkbox-border);
+}
+
+body.dark-mode .task-checkbox:hover {
+    border-color: #999;
+}
+
+body.dark-mode .task-checkbox.checked {
+    border-color: var(--dark-task-checkbox-checked-border);
+    background-color: var(--dark-task-checkbox-checked-bg);
+    color: var(--dark-task-checkbox-checked-color);
+}
+
+li.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--light-task-completed-text);
+}
+
+li.task-item.completed {
+    background-color: var(--light-task-bg); /* Se mantiene blanco o claro para que el tachado se vea */
+}
+
+body.dark-mode li.task-item.completed .task-text {
+    color: var(--dark-task-completed-text);
+}
+
+body.dark-mode li.task-item.completed {
+    background-color: var(--dark-completed-task-bg);
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+}
+
+.footer button {
+    margin-top: 0;
+    background-color: var(--light-delete-button-bg);
+}
+
+.footer button:hover {
+    background-color: var(--light-delete-button-hover-bg);
+}
+
+body.dark-mode .footer button {
+    background-color: var(--dark-delete-button-bg);
+    color: var(--dark-text-color); /* Color de texto en modo oscuro */
+}
+
+body.dark-mode .footer button:hover {
+    background-color: var(--dark-delete-button-hover-bg);
+}
+
+/* --- Estilos para la Configuración de Perfil (profile-setup) --- */
+#profile-setup {
+    display: flex;background-image: url('../img/fondo.png'); 
+    background-size: cover;
+    background-position: center center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    /* Estilos para el contenedor transparente y resaltado */
+    background-color: rgba(235, 240, 243, 0.959); /* Fondo blanco con 80% de opacidad (transparente) */
+    border-radius: 50px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave para resaltar */
+    backdrop-filter: blur(10px); /* Opcional: desenfoque del fondo para mejor legibilidad */
+}
+
+#profile-setup h1 {
+    font-size: 2.5em;
+    color: var(--light-text-color); 
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra en el texto para contraste */
+}
+
+#profile-setup p {
+    color: var(--light-profile-setup-text);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra en el texto para contraste */
+}
+
+body.dark-mode #profile-setup h1 {
+    color: var(--dark-text-color);
+}
+
+
+body.dark-mode #profile-setup p {
+    color: var(--dark-profile-setup-text);
+}
+
+.profile-image-container {
+    position: relative;
+    margin: 20px 0;
+}
+
+#profile-image-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: var(--light-profile-image-preview-bg);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: var(--light-profile-image-preview-text);
+    user-select: none;
+    border: 2px solid var(--light-input-border); /* Añadir un borde sutil */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body.dark-mode #profile-image-preview {
+    background-color: var(--dark-profile-image-preview-bg);
+    color: var(--dark-profile-image-preview-text);
+    border-color: var(--dark-input-border);
+}
+
+#profile-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#edit-profile-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: var(--light-button-bg);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+body.dark-mode #edit-profile-btn {
+    background-color: var(--dark-button-bg);
+}
+
+#profile-name-display {
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: var(--light-profile-setup-text);
+}
+
+body.dark-mode #profile-name-display {
+    color: var(--dark-profile-setup-text);
+}
+
+#enter-app-btn {
+    padding: 10px 20px;
+    background-color: var(--light-modal-save-button-bg); /* Usar el verde de guardar */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#enter-app-btn:disabled {
+    background-color: var(--light-enter-app-button-disabled);
+    cursor: not-allowed;
+}
+
+body.dark-mode #enter-app-btn {
+    background-color: var(--dark-modal-save-button-bg);
+}
+
+body.dark-mode #enter-app-btn:disabled {
+    background-color: var(--dark-enter-app-button-disabled);
+}
+
+/* Estilos para el modal de edición de perfil */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+}
+
+.modal-content {
+    background-color: var(--light-modal-bg);
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid var(--light-modal-border);
+    width: 90%; /* Más ancho en móviles */
+    max-width: 450px; /* Ancho máximo para el modal */
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra más pronunciada */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+body.dark-mode .modal-content {
+    background-color: var(--dark-modal-bg);
+    border-color: var(--dark-modal-border);
+}
+
+.close-button {
+    color: var(--light-close-button-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+}
+
+body.dark-mode .close-button {
+    color: var(--dark-close-button-color);
+}
+
+body.dark-mode .close-button:hover,
+body.dark-mode .close-button:focus {
+    color: var(--dark-close-button-hover-color);
+}
+
+.modal-content h2 {
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+body.dark-mode .modal-content h2 {
+    color: var(--dark-text-color);
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--light-modal-label-color);
+}
+
+body.dark-mode .modal-content label {
+    color: var(--dark-modal-label-color);
+}
+
+.modal-content input[type=text],
+.modal-content input[type=file] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--light-modal-input-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--light-task-bg); /* Fondo blanco por defecto */
+    color: var(--light-text-color);
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body.dark-mode .modal-content input[type=text],
+body.dark-mode .modal-content input[type=file] {
+    background-color: var(--dark-modal-input-bg);
+    color: var(--dark-modal-input-color);
+    border-color: var(--dark-modal-input-border);
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#save-profile-btn {
+    background-color: var(--light-modal-save-button-bg);
+    color: white;
+}
+
+body.dark-mode #save-profile-btn {
+    background-color: var(--dark-modal-save-button-bg);
+}
+
+#cancel-profile-btn {
+    background-color: var(--light-modal-cancel-button-bg);
+    color: white;
+}
+
+body.dark-mode #cancel-profile-btn {
+    background-color: var(--dark-modal-cancel-button-bg);
+}
+
+/* --- Estilos para el Encabezado de Perfil en la App --- */
+.profile-header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    cursor: pointer; /* Hacerlo clickable para volver a la configuración */
+}
+
+#profile-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile-icon-preview { /* Usar este para el icono del header */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--light-profile-image-preview-bg);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    color: var(--light-profile-image-preview-text);
+    user-select: none;
+    border: 1px solid var(--light-input-border); /* Borde sutil */
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+body.dark-mode #profile-icon-preview {
+    background-color: var(--dark-profile-image-preview-bg);
+    color: var(--dark-profile-image-preview-text);
+    border-color: var(--dark-input-border);
+}
+
+#profile-icon-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#profile-name-header {
+    font-size: 0.7em;
+    color: var(--light-profile-setup-text);
+    margin-top: 5px;
+    text-align: right;
+    max-width: 80px; 
+    white-space: nowrap; /* Evitar que el texto se envuelva */
+    overflow: hidden; /* Ocultar el texto que excede el ancho */
+    text-overflow: ellipsis; /* Mostrar puntos suspensivos si el texto es muy largo */
+}
+
+body.dark-mode #profile-name-header {
+    color: var(--dark-profile-name-header-color);
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 600px) {
+    .app {
+        padding: 20px;
+        margin: 10px; /* Un poco de margen en pantallas pequeñas */
+    }
+
+    .app .header {
+        flex-direction: column; /* Apilar elementos en el header */
+        text-align: center;
+    }
+
+    .app .header img {
+        margin: 0 0 15px 0; /* Ajustar márgenes de la imagen */
+    }
+
+    .controls {
+        flex-direction: column; /* Apilar input y botón en controles */
+    }
+
+    .filters {
+        flex-direction: column; /* Apilar botones de filtro */
+    }
+
+    .filters button {
+        width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .modal-content {
+        margin: 10% auto; /* Ajustar margen del modal en pantallas pequeñas */
+    }
+
+    #profile-setup {
+        max-width: 90%; /* Ajustar ancho en configuración */
+    }
+}

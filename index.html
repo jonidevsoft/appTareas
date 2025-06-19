@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="profile-setup">
+        <h1>Bienvenido a To-Do List</h1>
+        <p>Configura tu perfil</p>
+        <div class="profile-image-container">
+            <div id="profile-image-preview"></div>
+            <button id="edit-profile-btn">Editar</button>
+        </div>
+        <div id="profile-name-display"></div>
+        <button id="enter-app-btn" disabled>Ingresar</button>
+
+        <div id="edit-profile-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Editar Perfil</h2>
+                <label for="profile-image-upload">Foto de Perfil:</label>
+                <input type="file" id="profile-image-upload" accept="image/*">
+                <label for="profile-name-input">Nombre de Pila:</label>
+                <input type="text" id="profile-name-input">
+                <div class="modal-buttons">
+                    <button id="save-profile-btn">Guardar</button>
+                    <button id="cancel-profile-btn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-container" style="display: none;">
+        <div class="app">
+            <div class="profile-header">
+                <div id="profile-icon-container">
+                    <div id="profile-icon-preview"></div>
+                    <div id="profile-name-header"></div>
+                </div>
+            </div>
+            <div class="header">
+                <h1>Mi Día</h1>
+                <img src="img/To-Do List.png" alt="Personaje ilustrativo de To-Do List" loading="lazy">
+                <div id="datetime"></div>
+                <button id="toggleDarkMode">💡</button>
+            </div>
+            <div class="controls">
+                <input type="text" id="taskInput" placeholder="Escribe una nueva tarea">
+                <button id="addTaskBtn">Añadir Tarea</button>
+            </div>
+            <div class="filters">
+                <button id="filterAll" class="active">Todos</button>
+                <button id="filterActive">Activos</button>
+                <button id="filterCompleted">Completados</button>
+                <button id="clearCompleted">Eliminar Completados</button>
+            </div>
+            <ul id="taskList" class="task-list"></ul>
+            <div class="footer">
+                <button id="clearAllBtn">Eliminar todas las tareas</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
