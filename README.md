@@ -12,6 +12,6 @@
 🛠️ Tecnologías utilizadas
 HTML5
 CSS3
-JavaScript
+JavaScript e icluye "drop" y "drag"
 
 ⭐ ¿Te gusta este proyecto? ¡Dale una estrella al repositorio en GitHub y compártelo con otros! ⭐
